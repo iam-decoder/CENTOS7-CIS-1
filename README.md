@@ -1,10 +1,10 @@
-RHEL 7 CIS STIG
+CENTOS 7 CIS STIG
 ================
 
-[![Build Status](https://travis-ci.org/MindPointGroup/RHEL7-CIS.svg?branch=devel)](https://travis-ci.org/MindPointGroup/RHEL7-CIS)
-[![Ansible Role](https://img.shields.io/ansible/role/16089.svg)](https://galaxy.ansible.com/MindPointGroup/RHEL7-CIS/)
+#[![Build Status](https://travis-ci.org/softfactoryio/centos7-CIS.svg?branch=devel)](https://travis-ci.org/SofFactoryio/centos7-CIS)
+#[![Ansible Role](https://img.shields.io/ansible/role/16089.svg)](https://galaxy.ansible.com/MindPointGroup/RHEL7-CIS/)
 
-Configure RHEL/Centos 7 machine to be [CIS](https://www.cisecurity.org/cis-benchmarks/) compliant. Level 1 and 2 findings will be corrected by default.
+Configure Centos 7 machine to be [CIS](https://www.cisecurity.org/cis-benchmarks/) compliant. Level 1 and 2 findings will be corrected by default.
 
 This role **will make changes to the system** that could break things. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted.
 
@@ -17,12 +17,12 @@ If you want to install this via the `ansible-galaxy` command you'll need to run 
 With this in the file requirements.yml:
 
 ```
-- src: https://github.com/MindPointGroup/RHEL7-CIS.git
+- src: https://github.com/softfactoryio/CENTOS7-CIS.git
 ```
 
-Based on [CIS RedHat Enterprise Linux 7 Benchmark v2.1.1 - 01-31-2017 ](https://community.cisecurity.org/collab/public/index.php).
+Based on [CIS CentOS Linux 7 Benchmark v2.2.0 - 27-01-2017 ](https://www.cisecurity.org/cis-benchmarks/).
 
-This repo originated from work done by [Sam Doran](https://github.com/samdoran/ansible-role-stig)
+This repo originated from work done by [MindPointGroup](https://github.com/MindPointGroup/RHEL7-CIS) 
 
 Requirements
 ------------
@@ -170,7 +170,7 @@ This sample playbook should be run in a folder that is above the main RHEL7-CIS 
   become: yes
 
   roles:
-    - RHEL7-CIS
+    - CENTOS7-CIS
 ```
 
 Tags

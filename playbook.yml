@@ -12,4 +12,4 @@
         - which
 
   roles:
-    - role: RHEL7-CIS
+    - role: CENTOS7-CIS

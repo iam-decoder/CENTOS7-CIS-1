@@ -1,4 +1,4 @@
-# Makefile for RHEL7-CIS
+# Makefile for CENTOS7-CIS
 .PHONY: help
 help:
 	@echo
