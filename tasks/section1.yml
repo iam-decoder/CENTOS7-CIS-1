@@ -623,29 +623,35 @@
       - patch
       - rule_1.4.2
 
-- name: "NOTSCORED | 1.4.3 | PATCH | Ensure authentication required for single user mode"
-  command: /bin/true
-  changed_when: no
-  when:
-      - centos7cis_rule_1_4_3
+- name: "SCORED | 1.4.3 | - Check if sysconfig init file exists"
+  stat:
+    path: /etc/sysconfig/init
+  register: sysconfig_init_1_4_3
   tags:
-      - level1
-      - level2
-      - patch
-      - rule_1.4.3
-      - notimplemented
+    - level1
+    - rule_1.4.3
+    - scored
 
-- name: "NOTSCORED | 1.4.3 | PATCH | Ensure authentication required for single user mode"
-  command: /bin/true
-  changed_when: no
-  when:
-      - centos7cis_rule_1_4_3
+- name:  "SCORED | 1.4.3 | - Ensure authentication is required for single-user mode"
+  copy:
+    dest: /etc/sysconfig/init
+    content: "SINGLE=/sbin/sulogin\n"
+  when: sysconfig_init_1_4_3.stat.exists is not defined or not sysconfig_init_1_4_3.stat.exists
   tags:
-      - level1
-      - level2
-      - patch
-      - rule_1.4.3
-      - notimplemented
+    - level1
+    - rule_1.4.3
+    - scored
+
+- name: "SCORED | 1.4.3 | - Ensure authentication is required for single-user mode"
+  lineinfile:
+    dest: /etc/sysconfig/init
+    regexp: "^SINGLE="
+    line: "SINGLE=/sbin/sulogin"
+  when: sysconfig_init_1_4_3.stat.exists is defined and sysconfig_init_1_4_3.stat.exists
+  tags:
+    - level1
+    - rule_1.4.3
+    - scored
 
 - name: "SCORED | 1.5.1 | PATCH | Ensure core dumps are restricted"
   lineinfile:
