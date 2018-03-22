@@ -686,17 +686,41 @@
       - patch
       - rule_1.5.1
 
-- name: "NOTSCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
-  command: /bin/true
-  changed_when: no
+- name: "SCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
+  shell: "dmesg | grep NX"
+  register: dmesg_1_5_2
+  always_run: yes
+  changed_when: False
+  ignore_errors: true
   when:
       - centos7cis_rule_1_5_2
   tags:
-      - level1
-      - level2
-      - patch
-      - rule_1.5.2
-      - notimplemented
+    - level1
+    - rule_1.5.2
+    - scored
+
+- name: "SCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
+  fail:
+    msg: "Ensure XD/NX support is enabled."
+  when:
+    - "'NX (Execute Disable) protection: active' not in dmesg_1_5_2.stdout"
+    - fail_on_manual_remediation_actions
+  tags:
+    - level1
+    - rule_1.5.2
+    - scored
+
+- name: "SCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
+  debug:
+    msg: "*** ACTION REQUIRED *** Ensure XD/NX support is enabled."
+  when:
+    - "'NX (Execute Disable) protection: active' not in dmesg_1_5_2.stdout"
+    - not fail_on_manual_remediation_actions
+  tags:
+    - level1
+    - rule_1.5.2
+    - scored
+
 
 - name: "SCORED | 1.5.3 | PATCH | Ensure address space layout randomization (ASLR) is enabled"
   sysctl:
