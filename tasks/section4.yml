@@ -5,7 +5,7 @@
       line: "max_log_file = 10"
       state: present
   when:
-      - rhel7cis_rule_4_1_1_1
+      - centos7cis_rule_4_1_1_1
   tags:
       - level2
       - auditd
@@ -16,10 +16,10 @@
   lineinfile:
       dest: /etc/audit/auditd.conf
       regexp: "^admin_space_left_action"
-      line: "admin_space_left_action = {{ rhel7cis_auditd['admin_space_left_action'] }}"
+      line: "admin_space_left_action = {{ centos7cis_auditd['admin_space_left_action'] }}"
       state: present
   when:
-      - rhel7cis_rule_4_1_1_2
+      - centos7cis_rule_4_1_1_2
   tags:
       - level2
       - auditd
@@ -30,10 +30,10 @@
   lineinfile:
       dest: /etc/audit/auditd.conf
       regexp: "^max_log_file_action"
-      line: "max_log_file_action = {{ rhel7cis_auditd['max_log_file_action'] }}"
+      line: "max_log_file_action = {{ centos7cis_auditd['max_log_file_action'] }}"
       state: present
   when:
-      - rhel7cis_rule_4_1_1_3
+      - centos7cis_rule_4_1_1_3
   tags:
       - level2
       - auditd
@@ -46,8 +46,8 @@
       state: started
       enabled: yes
   when:
-      - rhel7cis_skip_for_travis == false
-      - rhel7cis_rule_4_1_2
+      - centos7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_2
   tags:
       - level2
       - auditd
@@ -63,7 +63,7 @@
   ignore_errors: yes
   notify: generate new grub config
   when:
-      - rhel7cis_rule_4_1_3
+      - centos7cis_rule_4_1_3
   tags:
       - level2
       - auditd
@@ -74,7 +74,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_4
+      - centos7cis_rule_4_1_4
   tags:
       - level2
       - auditd
@@ -86,7 +86,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_5
+      - centos7cis_rule_4_1_5
   tags:
       - level2
       - auditd
@@ -98,7 +98,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_6
+      - centos7cis_rule_4_1_6
   tags:
       - level2
       - auditd
@@ -110,7 +110,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_7
+      - centos7cis_rule_4_1_7
   tags:
       - level2
       - auditd
@@ -122,7 +122,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_8
+      - centos7cis_rule_4_1_8
   tags:
       - level2
       - auditd
@@ -134,7 +134,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_9
+      - centos7cis_rule_4_1_9
   tags:
       - level2
       - auditd
@@ -146,7 +146,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_10
+      - centos7cis_rule_4_1_10
   tags:
       - level2
       - auditd
@@ -158,7 +158,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_11
+      - centos7cis_rule_4_1_11
   tags:
       - level2
       - auditd
@@ -170,7 +170,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_12
+      - centos7cis_rule_4_1_12
   tags:
       - level2
       - auditd
@@ -184,8 +184,8 @@
       line: "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts"
       state: present
   when:
-      - rhel7cis_rule_4_1_13
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_13
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -198,8 +198,8 @@
       line: "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts"
       state: present
   when:
-      - rhel7cis_rule_4_1_13
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_13
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -212,8 +212,8 @@
       line: "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k mounts"
       state: present
   when:
-      - rhel7cis_rule_4_1_13
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_13
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -224,7 +224,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_14
+      - centos7cis_rule_4_1_14
   tags:
       - level2
       - auditd
@@ -238,8 +238,8 @@
       line: "-w /etc/sudoers -p wa -k scope"
       state: present
   when:
-      - rhel7cis_rule_4_1_15
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_15
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -252,8 +252,8 @@
       line: "-w /etc/sudoers -p wa -k scope"
       state: present
   when:
-      - rhel7cis_rule_4_1_15
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_15
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -266,8 +266,8 @@
       line: "-w /etc/sudoers.d -p wa -k scope"
       state: present
   when:
-      - rhel7cis_rule_4_1_15
-      - rhel7cis_skip_for_travis == false
+      - centos7cis_rule_4_1_15
+      - centos7cis_skip_for_travis == false
   tags:
       - level2
       - auditd
@@ -278,7 +278,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_16
+      - centos7cis_rule_4_1_16
   tags:
       - level2
       - auditd
@@ -290,7 +290,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_17
+      - centos7cis_rule_4_1_17
   tags:
       - level2
       - auditd
@@ -302,7 +302,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_1_18
+      - centos7cis_rule_4_1_18
   tags:
       - level2
       - auditd
@@ -312,10 +312,10 @@
 
 - name: "SCORED | 4.2.3 | PATCH | Ensure rsyslog or syslog-ng is installed"
   yum:
-      name: "{{ rhel7cis_syslog }}"
+      name: "{{ centos7cis_syslog }}"
       state: present
   when:
-      - rhel7cis_rule_4_2_3
+      - centos7cis_rule_4_2_3
   tags:
       - level1
       - level2
@@ -326,7 +326,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_1_1
+      - centos7cis_rule_4_2_1_1
   tags:
       - level1
       - level2
@@ -338,7 +338,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_1_2
+      - centos7cis_rule_4_2_1_2
   tags:
       - level1
       - level2
@@ -352,7 +352,7 @@
       regexp: '^\$FileCreateMode'
       line: '$FileCreateMode 0640'
   when:
-      - rhel7cis_rule_4_2_1_3
+      - centos7cis_rule_4_2_1_3
   tags:
       - level1
       - level2
@@ -363,7 +363,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_1_4
+      - centos7cis_rule_4_2_1_4
   tags:
       - level1
       - level2
@@ -375,7 +375,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_1_5
+      - centos7cis_rule_4_2_1_5
   tags:
       - level1
       - level2
@@ -387,7 +387,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_1_5
+      - centos7cis_rule_4_2_1_5
   tags:
       - level1
       - level2
@@ -399,7 +399,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_2_1
+      - centos7cis_rule_4_2_2_1
   tags:
       - level1
       - level2
@@ -411,7 +411,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_2_2
+      - centos7cis_rule_4_2_2_2
   tags:
       - level1
       - level2
@@ -423,7 +423,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_2_3
+      - centos7cis_rule_4_2_2_3
   tags:
       - level1
       - level2
@@ -435,7 +435,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_2_4
+      - centos7cis_rule_4_2_2_4
   tags:
       - level1
       - level2
@@ -447,7 +447,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_rule_4_2_2_5
+      - centos7cis_rule_4_2_2_5
   tags:
       - level1
       - level2
@@ -460,7 +460,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_4_2_4
+      - centos7cis_rule_4_2_4
   tags:
       - level1
       - level2
