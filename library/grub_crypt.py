@@ -1,12 +1,18 @@
 #!/usr/bin/python
 
-import random, string, crypt
+import crypt
+import random
+import string
+
+from ansible.module_utils.basic import AnsibleModule
+
 
 def gen_pass(size=16, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
+
 def gen_salt(salt):
-    '''Generate a random salt.'''
+    """Generate a random salt."""
     ret = ''
     if not salt:
         with open('/dev/urandom', 'rb') as urandom:
@@ -21,14 +27,15 @@ def gen_salt(salt):
     else:
         return '$6$%s' % salt
 
+
 def main():
     module = AnsibleModule(
-            argument_spec = dict(
-                salt = dict(required=False, default=None),
-                password = dict(no_log=True, required=False, default='random', type='str'),
-                )
+        argument_spec=dict(
+            salt=dict(required=False, default=None),
+            password=dict(no_log=True, required=False, default='random', type='str'),
+        )
 
-            )
+    )
     salt = module.params['salt']
     password = module.params['password']
     if password == 'random':
@@ -37,6 +44,6 @@ def main():
     salted_pass = crypt.crypt(password, sha512_salt)
     module.exit_json(changed=False, passhash=salted_pass)
 
-from ansible.module_utils.basic import *
+
 if __name__ == '__main__':
-        main()
+    main()
