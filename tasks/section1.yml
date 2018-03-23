@@ -354,14 +354,13 @@
 
 - name: "SCORED | 1.1.14 | PATCH | Ensure nodev option set on /home partition"
   mount:
-    name: /home
+    name: "{{ item.mount }}"
     state: mounted
     fstype: "{{ item.fstype }}"
     src: "{{ item.device }}"
     opts: "{{ item.options.split(',') | union(['nodev']) | join(',') }}"
   with_items: "{{ ansible_mounts }}"
-  when:
-      - centos7cis_rule_1_1_14
+  when: (item.mount == '/home') and (centos7cis_rule_1_1_14)
   tags:
       - level1
       - level2
@@ -824,6 +823,19 @@
   yum:
       name: mcstrans
       state: absent
+  when:
+      - centos7cis_rule_1_6_1_5
+  tags:
+      - level2
+      - scored
+      - patch
+      - rule_1.6.1.5
+
+- name: "SCORED | 1.6.1.6 | PATCH | Ensure no unconfined daemons exist"
+  shell: ps -eZ | egrep "initrc" | egrep -vw "tr|ps|egrep|bash|awk" | tr ':' ' ' |
+awk '{ print $NF }'
+  register: unconfined_daemons_exist
+  failed_when: "unconfined_daemons_exist == 2 or pgrep.rc == 3"
   when:
       - centos7cis_rule_1_6_1_5
   tags:
