@@ -65,6 +65,7 @@ centos7cis_rule_1_6_1_2: true
 centos7cis_rule_1_6_1_3: true
 centos7cis_rule_1_6_1_4: true
 centos7cis_rule_1_6_1_5: true
+centos7cis_rule_1_6_1_6: true
 centos7cis_rule_1_6_2: true
 centos7cis_rule_1_7_1_1: true
 centos7cis_rule_1_7_1_2: true
