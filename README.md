@@ -1,8 +1,8 @@
 CENTOS 7 CIS STIG
 ================
 
-#[![Build Status](https://travis-ci.org/softfactoryio/CENTOS7-CIS.svg?branch=devel)](https://travis-ci.org/softfactoryio/CENTOS7-CIS)
-#[![Ansible Role](https://img.shields.io/ansible/role/16089.svg)](https://galaxy.ansible.com/MindPointGroup/CENTOS7-CIS/)
+[![Build Status](https://travis-ci.org/softfactoryio/CENTOS7-CIS.svg?branch=devel)](https://travis-ci.org/softfactoryio/CENTOS7-CIS)
+
 
 Configure Centos 7 machine to be [CIS](https://www.cisecurity.org/cis-benchmarks/) compliant. Level 1 and 2 findings will be corrected by default.
 
