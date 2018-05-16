@@ -229,8 +229,7 @@
       enabled: yes
       masked: no
       state: started
-  when:
-      - centos7cis_rule_1_1_2
+  when: centos7cis_rule_1_1_2
   tags:
       - level2
       - scored
