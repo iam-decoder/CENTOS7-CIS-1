@@ -769,6 +769,7 @@
   notify: generate new grub config
   when:
       - centos7cis_rule_1_6_1_1
+      - not centos7cis_selinux_disable
   tags:
       - level2
       - scored
