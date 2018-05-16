@@ -449,7 +449,10 @@
       - rule_1.1.22
 
 - name: "NOTSCORED | 1.2.1 | PATCH | Ensure package manager repositories are configured"
-  command: yum repolist
+  command: yum check-update
+  register: yum_configured
+  changed_when: no
+  failed_when: no
   when:
       - centos7cis_rule_1_2_1
   tags:
