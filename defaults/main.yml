@@ -25,7 +25,7 @@ centos7cis_rule_1_1_1_5: true
 centos7cis_rule_1_1_1_6: true
 centos7cis_rule_1_1_1_7: true
 centos7cis_rule_1_1_1_8: true
-centos7cis_rule_1_1_2: true
+centos7cis_rule_1_1_2: false
 centos7cis_rule_1_1_3: true
 centos7cis_rule_1_1_4: true
 centos7cis_rule_1_1_5: true
@@ -338,8 +338,8 @@ centos7cis_host_allow:
     - "172.16.0.0/255.240.0.0"
     - "192.168.0.0/255.255.0.0"
 
-centos7cis_firewall: firewalld
-#centos7cis_firewall: iptables
+#centos7cis_firewall: firewalld
+centos7cis_firewall: iptables
 
 centos7cis_firewall_services:
     - ssh
