@@ -688,7 +688,7 @@
       - rule_1.5.1
 
 - name: "SCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
-  shell: "dmesg | grep NX"
+  # shell: "dmesg | grep NX"
   register: dmesg_1_5_2
   always_run: yes
   changed_when: False
