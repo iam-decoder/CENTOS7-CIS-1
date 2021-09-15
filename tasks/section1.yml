@@ -691,8 +691,8 @@
   # shell: "dmesg | grep NX"
   register: dmesg_1_5_2
   always_run: yes
-  changed_when: False
-  ignore_errors: true
+  changed_when: no
+  ignore_errors: yes
   when:
       - centos7cis_rule_1_5_2
   tags:
